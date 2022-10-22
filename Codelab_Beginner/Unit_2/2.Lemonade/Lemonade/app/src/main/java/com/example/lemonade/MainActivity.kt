@@ -44,6 +44,8 @@ fun LemonadeApp() {
 @Preview(showBackground = true)
 @Composable
 fun MakeLemonade(modifier: Modifier = Modifier) {
+    //by : Delegate Pattern 코드를 자동으로 구현해주는 키워드
+    //컴포저블이 새로고침 되어도 step 값은 다시 초기화 하지 말고 기억해둔거 꺼내자?
     var step by remember { mutableStateOf(1) }
     val text = when(step) {
         1 -> stringResource(R.string.tree)
@@ -57,6 +59,9 @@ fun MakeLemonade(modifier: Modifier = Modifier) {
         3 -> R.drawable.lemon_drink
         else -> R.drawable.lemon_restart
     }
+
+    //remember를 쓰지 않으면 버튼을 클릭 할 때마다 계속 랜덤값으로 초기화 시켜버림
+    var squeezeCount by remember { mutableStateOf((2..4).random()) }
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val pressedColor = if(isPressed) Color.LightGray else Color.White
@@ -68,7 +73,14 @@ fun MakeLemonade(modifier: Modifier = Modifier) {
         Text(text = text, fontSize = 18.sp)
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = { if(++step > 4) step = 1 },
+            onClick = {
+                if(step == 2) {
+                    if(--squeezeCount <= 0) {
+                        squeezeCount = (2..4).random()
+                        step++
+                    }
+                } else if(++step > 4) step = 1
+            },
             interactionSource = interactionSource,
             colors = ButtonDefaults.buttonColors(backgroundColor = pressedColor),
             border = BorderStroke(width = 1.dp, color = Color(105, 205, 216)),
