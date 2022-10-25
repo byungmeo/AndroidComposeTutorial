@@ -45,7 +45,8 @@ fun LemonadeApp() {
 @Composable
 fun MakeLemonade(modifier: Modifier = Modifier) {
     //by : Delegate Pattern 코드를 자동으로 구현해주는 키워드
-    //컴포저블이 새로고침 되어도 step 값은 다시 초기화 하지 말고 기억해둔거 꺼내자?
+    //새로고침(리컴포지션) 되어도 가장 최근의 result 값이 사용됨
+    //observable 변수에 대해서 알아야 함 (값이 변경될 때 재구성(Recomposition)을 예약하는 변수)
     var step by remember { mutableStateOf(1) }
     val text = when(step) {
         1 -> stringResource(R.string.tree)
@@ -60,7 +61,7 @@ fun MakeLemonade(modifier: Modifier = Modifier) {
         else -> R.drawable.lemon_restart
     }
 
-    //remember를 쓰지 않으면 버튼을 클릭 할 때마다 계속 랜덤값으로 초기화 시켜버림
+    //remember mutableStateOf를 쓰지 않으면 버튼을 클릭 할 때마다 계속 랜덤값으로 초기화 시켜버림
     var squeezeCount by remember { mutableStateOf((2..4).random()) }
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
