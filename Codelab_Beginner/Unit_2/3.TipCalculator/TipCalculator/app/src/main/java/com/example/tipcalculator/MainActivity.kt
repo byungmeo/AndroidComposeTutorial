@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -152,7 +153,10 @@ fun EditNumberField(
     )
 }
 
-private fun calculateTip (
+//test 코드에서 접근할 수 있도록 internal 로 선언하고
+//테스트 목적으로만 공개된다고 annotation 을 선언한다
+@VisibleForTesting
+internal fun calculateTip (
     amount: Double,
     tipPercent: Double = 15.0,
     roundUp: Boolean
