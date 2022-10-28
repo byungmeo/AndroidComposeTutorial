@@ -10,4 +10,5 @@
 <img src = "https://github.com/byungmeo/AndroidComposeTutorial/blob/6b03313c34bfb84cfc3259ba8d9a5eac4ff4df08/Codelab_Beginner/Unit_2/2.Lemonade/Lemonade.gif" width = "20%" height = "20%">
 <img src = "https://github.com/byungmeo/AndroidComposeTutorial/blob/2a92c6baa875abedbf11a86bf8230e8439bc2f3b/Codelab_Beginner/Unit_2/3.TipCalculator/Ver1.FixRatioTipCalculator.jpg" width = "20%" height = "20%">
 <img src = "https://github.com/byungmeo/AndroidComposeTutorial/blob/f8667ccc14b55fb872868196da98d976ef4aed5a/Codelab_Beginner/Unit_2/3.TipCalculator/Ver2.TipCalculator.gif" width = "20%" height = "20%">
+<img src = "https://github.com/byungmeo/AndroidComposeTutorial/blob/603c62efc5c3477f35fe650b084df6d3192ab271/Codelab_Beginner/Unit_2/4.ArtSpace/ArtSpace.gif" width = "20%" height = "20%">
 </p>
